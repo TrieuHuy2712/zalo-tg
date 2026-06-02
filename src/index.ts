@@ -159,6 +159,18 @@ async function main(): Promise<void> {
     { command: 'update',         description: 'Kiểm tra bản cập nhật mới' },
   ]).catch(() => undefined);
 
+  // ── Register bot commands for Telegram menu ───────────────────────────────
+  tgBot.telegram.setMyCommands([
+    { command: 'login',          description: 'Đăng nhập Zalo qua QR code' },
+    { command: 'search',         description: 'Tìm bạn bè / nhóm Zalo để tạo topic' },
+    { command: 'addfriend',      description: 'Tìm & kết bạn Zalo theo số điện thoại' },
+    { command: 'addgroup',       description: 'Tạo topic cho nhóm Zalo chưa có topic' },
+    { command: 'joingroup',      description: 'Tham gia nhóm Zalo qua link' },
+    { command: 'friendrequests', description: 'Xem lời mời kết bạn & lời mời nhóm' },
+    { command: 'topic',          description: 'Quản lý topic: list / info / delete' },
+    { command: 'recall',         description: 'Thu hồi tin nhắn (reply vào tin đã gửi)' },
+  ]).catch(() => undefined);
+
   // ── Start Telegram bot so /login can be received immediately ───────────────
   // NOTE: tgBot.launch() runs the polling loop forever, so we must NOT await it.
   // The second argument callback fires once getMe() + deleteWebhook() succeed.
